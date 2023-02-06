@@ -1,11 +1,17 @@
 import css from './ContactItem.module.css';
 import PropTypes from 'prop-types';
+import { deleteContact } from '../../redux/contactsSlice';
 
-const ContactItem = ({ name, number }) => {
+const ContactItem = ({ key, name, number }) => {
   return (
-    <p className={css.contact}>
-      {name}:<span className={css.number}> {number}</span>
-    </p>
+    <li className={css.listItem} key={key}>
+      <p className={css.contact}>
+        {name}:<span className={css.number}> {number}</span>
+      </p>
+      <button type="button" onClick={() => deleteContact(key)}>
+        Delete
+      </button>
+    </li>
   );
 };
 
